@@ -29,7 +29,11 @@ export function Footer() {
 
       <div className="mx-auto max-w-7xl px-6 py-14 grid md:grid-cols-3 gap-10">
         <div>
-          <div className="font-display text-2xl">{RESTAURANT.name}</div>
+          <img
+            src={logo}
+            alt={`${RESTAURANT.name} logo`}
+            className="h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]"
+          />
           <p className="mt-3 text-sm text-white/70 max-w-sm">
             Authentic, family-owned Mexican kitchen in Rosedale, MD. Food made from the heart since day one.
           </p>
@@ -71,14 +75,6 @@ export function Footer() {
           </div>
           <p className="mt-3 text-xs text-white/50">Instagram feed coming soon</p>
         </div>
-      </div>
-
-      <div className="flex justify-center pt-6 pb-2">
-        <img
-          src={logo}
-          alt={`${RESTAURANT.name} logo`}
-          className="h-48 md:h-64 w-auto object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)]"
-        />
       </div>
 
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
