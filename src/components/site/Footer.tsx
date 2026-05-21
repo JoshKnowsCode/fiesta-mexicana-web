@@ -32,7 +32,7 @@ export function Footer() {
           <img
             src={logo}
             alt={`${RESTAURANT.name} logo`}
-            className="h-20 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]"
+            className="h-40 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]"
           />
           <p className="mt-3 text-sm text-white/70 max-w-sm">
             Authentic, family-owned Mexican kitchen in Rosedale, MD. Food made from the heart since day one.
