@@ -10,6 +10,7 @@ import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { MobileOrderBar } from "@/components/site/MobileOrderBar";
 import { MouseGlow } from "@/components/site/MouseGlow";
+import { FloatingTaco } from "@/components/site/FloatingTaco";
 import { LangProvider } from "@/context/LangContext";
 
 const restaurantJsonLd = {
@@ -74,6 +75,7 @@ function Index() {
     <LangProvider>
       <main className="relative overflow-x-hidden">
         <MouseGlow />
+        <FloatingTaco />
         <Nav />
         <Hero />
         <About />

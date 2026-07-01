@@ -1,33 +1,22 @@
 import { useMemo, useState } from "react";
 import { ChevronDown, Flame } from "lucide-react";
 import { MENU, type MenuItem } from "@/data/menu";
+import { MENU_ES } from "@/data/menuEs";
 import { Reveal } from "./Reveal";
 import { useLang } from "@/context/LangContext";
 
 const T = {
   en: {
-    tag: "Menu & Prices",
-    h2a: "Every dish,",
-    h2b: "made to order",
+    tag: "Menu & Prices", h2a: "Every dish,", h2b: "made to order",
     sub: "Filter by category, tap a dish to see ingredients and options.",
-    popular: "Popular",
-    mostLoved: "Most Loved",
-    guestFav: "Guest favorites",
-    seeOptions: "See options",
-    less: "Less",
-    all: "All",
+    popular: "Popular", mostLoved: "Most Loved", guestFav: "Guest favorites",
+    seeOptions: "See options", less: "Less", all: "All",
   },
   es: {
-    tag: "Menú y Precios",
-    h2a: "Cada platillo,",
-    h2b: "hecho al momento",
+    tag: "Menú y Precios", h2a: "Cada platillo,", h2b: "hecho al momento",
     sub: "Filtra por categoría, toca un platillo para ver ingredientes y opciones.",
-    popular: "Popular",
-    mostLoved: "Los Más Pedidos",
-    guestFav: "Favoritos de nuestros clientes",
-    seeOptions: "Ver opciones",
-    less: "Menos",
-    all: "Todo",
+    popular: "Popular", mostLoved: "Los Más Pedidos", guestFav: "Favoritos de nuestros clientes",
+    seeOptions: "Ver opciones", less: "Menos", all: "Todo",
   },
 };
 
@@ -39,21 +28,41 @@ function PopularBadge({ label }: { label: string }) {
   );
 }
 
-function Card({ item, featured = false, t }: { item: MenuItem; featured?: boolean; t: typeof T["en"] }) {
+function translateItem(item: MenuItem, lang: "en" | "es") {
+  if (lang === "en") return item;
+  // find the category this item belongs to
+  for (const cat of MENU) {
+    const esItems = MENU_ES[cat.id]?.items ?? {};
+    const esItem = esItems[item.name];
+    if (esItem) {
+      return {
+        ...item,
+        name: esItem.name ?? item.name,
+        description: esItem.description ?? item.description,
+        note: esItem.note ?? item.note,
+      };
+    }
+  }
+  return item;
+}
+
+function Card({ item, featured = false, t, lang }: { item: MenuItem; featured?: boolean; t: typeof T["en"]; lang: "en" | "es" }) {
   const [open, setOpen] = useState(false);
-  const hasMore = !!(item.description || item.options?.length || item.note);
+  const translated = translateItem(item, lang);
+  const hasMore = !!(translated.description || translated.options?.length || translated.note);
+
   return (
     <div className={`group relative rounded-2xl border bg-card overflow-hidden hover-lift ${featured ? "p-6 ring-2 ring-[var(--chili)]/20" : "p-5"}`}>
       {featured && <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-fire" />}
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
-          {item.popular && <div className="mb-1"><PopularBadge label={t.popular} /></div>}
-          <h3 className={`font-display font-semibold leading-snug ${featured ? "text-2xl" : "text-xl"}`}>{item.name}</h3>
+          {translated.popular && <div className="mb-1"><PopularBadge label={t.popular} /></div>}
+          <h3 className={`font-display font-semibold leading-snug ${featured ? "text-2xl" : "text-xl"}`}>{translated.name}</h3>
         </div>
-        <span className={`font-display text-[var(--chili)] tabular-nums shrink-0 ${featured ? "text-3xl" : "text-2xl"}`}>${item.price}</span>
+        <span className={`font-display text-[var(--chili)] tabular-nums shrink-0 ${featured ? "text-3xl" : "text-2xl"}`}>${translated.price}</span>
       </div>
-      {item.description && (
-        <p className={`mt-2 text-muted-foreground leading-relaxed line-clamp-2 ${featured ? "text-base" : "text-sm"}`}>{item.description}</p>
+      {translated.description && (
+        <p className={`mt-2 text-muted-foreground leading-relaxed line-clamp-2 ${featured ? "text-base" : "text-sm"}`}>{translated.description}</p>
       )}
       {hasMore && (
         <button onClick={() => setOpen((v) => !v)} className="mt-3 inline-flex items-center gap-1 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-[var(--chili)] transition">
@@ -63,12 +72,12 @@ function Card({ item, featured = false, t }: { item: MenuItem; featured?: boolea
       )}
       <div className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0"}`}>
         <div className="overflow-hidden">
-          {item.options && item.options.length > 0 && (
+          {translated.options && translated.options.length > 0 && (
             <ul className="flex flex-wrap gap-1.5">
-              {item.options.map((o) => <li key={o} className="rounded-full bg-muted px-2.5 py-1 text-xs">{o}</li>)}
+              {translated.options.map((o) => <li key={o} className="rounded-full bg-muted px-2.5 py-1 text-xs">{o}</li>)}
             </ul>
           )}
-          {item.note && <p className="mt-3 text-xs text-[var(--chili)]/80 italic">{item.note}</p>}
+          {translated.note && <p className="mt-3 text-xs text-[var(--chili)]/80 italic">{translated.note}</p>}
         </div>
       </div>
     </div>
@@ -80,7 +89,16 @@ export function MenuSection() {
   const t = T[lang];
   const [active, setActive] = useState<string>("all");
 
-  const cats = useMemo(() => [{ id: "all", title: t.all }, ...MENU.map((c) => ({ id: c.id, title: c.title }))], [t.all]);
+  const cats = useMemo(() => {
+    return [
+      { id: "all", title: t.all },
+      ...MENU.map((c) => ({
+        id: c.id,
+        title: lang === "es" ? (MENU_ES[c.id]?.title ?? c.title) : c.title,
+      })),
+    ];
+  }, [t.all, lang]);
+
   const popularItems = useMemo(() => MENU.flatMap((c) => c.items).filter((i) => i.popular).slice(0, 6), []);
   const visible = active === "all" ? MENU : MENU.filter((c) => c.id === active);
 
@@ -88,7 +106,9 @@ export function MenuSection() {
     <section id="menu" className="relative py-28 md:py-36 bg-[oklch(0.96_0.015_70)]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <Reveal><div className="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[var(--chili)] font-bold bg-gradient-to-r from-[var(--chili)]/12 to-transparent rounded-full border border-[var(--chili)]/25">{t.tag}</div></Reveal>
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[var(--chili)] font-bold bg-gradient-to-r from-[var(--chili)]/12 to-transparent rounded-full border border-[var(--chili)]/25">{t.tag}</div>
+          </Reveal>
           <Reveal delay={80}><h2 className="mt-5 text-4xl md:text-6xl font-display font-bold">{t.h2a} <span className="text-gradient-fire">{t.h2b}</span></h2></Reveal>
           <Reveal delay={140}><p className="mt-5 text-muted-foreground">{t.sub}</p></Reveal>
         </div>
@@ -107,7 +127,9 @@ export function MenuSection() {
             </Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {popularItems.map((item, i) => (
-                <Reveal key={item.name} delay={i * 50}><Card item={item} featured t={t} /></Reveal>
+                <Reveal key={item.name} delay={i * 50} animation="zoom">
+                  <Card item={item} featured t={t} lang={lang} />
+                </Reveal>
               ))}
             </div>
           </div>
@@ -127,24 +149,31 @@ export function MenuSection() {
         </Reveal>
 
         <div className="mt-14 space-y-16">
-          {visible.map((cat) => (
-            <div key={cat.id}>
-              <Reveal>
-                <div className="flex items-end justify-between flex-wrap gap-3 mb-6">
-                  <div>
-                    <h3 className="font-display text-3xl md:text-4xl">{cat.title}</h3>
-                    {cat.blurb && <p className="text-muted-foreground mt-1">{cat.blurb}</p>}
+          {visible.map((cat) => {
+            const esCat = MENU_ES[cat.id];
+            const catTitle = lang === "es" ? (esCat?.title ?? cat.title) : cat.title;
+            const catBlurb = lang === "es" ? (esCat?.blurb ?? cat.blurb) : cat.blurb;
+            return (
+              <div key={cat.id}>
+                <Reveal>
+                  <div className="flex items-end justify-between flex-wrap gap-3 mb-6">
+                    <div>
+                      <h3 className="font-display text-3xl md:text-4xl">{catTitle}</h3>
+                      {catBlurb && <p className="text-muted-foreground mt-1">{catBlurb}</p>}
+                    </div>
+                    <div className="h-px flex-1 ml-6 bg-gradient-to-r from-border to-transparent" />
                   </div>
-                  <div className="h-px flex-1 ml-6 bg-gradient-to-r from-border to-transparent" />
+                </Reveal>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {cat.items.map((item, i) => (
+                    <Reveal key={item.name} delay={i * 40} animation="fade-up">
+                      <Card item={item} t={t} lang={lang} />
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {cat.items.map((item, i) => (
-                  <Reveal key={item.name} delay={i * 40} animation="fade-up"><Card item={item} t={t} /></Reveal>
-                ))}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
