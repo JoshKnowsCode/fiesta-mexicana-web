@@ -60,7 +60,7 @@ export function About() {
             <img src={kitchen} alt="Handmade tortillas pressed in our family kitchen" loading="lazy" width={1024} height={1024} className="relative rounded-[2rem] shadow-soft object-cover w-full h-[540px]" />
             {/* Stats overlay at bottom of image */}
             <div className="absolute bottom-0 inset-x-0 rounded-b-[2rem] overflow-hidden">
-              <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent px-7 pt-12 pb-6 flex items-end justify-between text-cream" style={{ color: "var(--cream)" }}>
+              <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent px-7 pt-12 pb-6 grid grid-cols-3 items-end text-center text-cream" style={{ color: "var(--cream)" }}>
                 {[
                   { n: "20+", label: t.years },
                   { n: "100%", label: lang === "en" ? "Family recipes" : "Recetas familiares" },
