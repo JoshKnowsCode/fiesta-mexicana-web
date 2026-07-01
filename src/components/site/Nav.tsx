@@ -79,7 +79,7 @@ export function Nav() {
       </div>
 
       {/* Main nav pill */}
-      <div className="mx-auto max-w-7xl px-4 pb-2">
+      <div className="mx-auto max-w-7xl px-4 pt-4 lg:pt-0 pb-2">
         <div
           className={`relative flex items-center justify-between gap-4 rounded-full px-4 sm:px-6 py-2.5 text-cream shadow-soft transition-all duration-500 ${
             scrolled ? "glass-dark" : "bg-black/20 backdrop-blur-sm border border-white/10"
