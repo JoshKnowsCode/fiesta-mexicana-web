@@ -154,3 +154,40 @@
     to { transform: scale(1.18) translate(-1%, -1%); }
   }
 }
+
+  /* Grain/film texture overlay */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    background-repeat: repeat;
+  }
+
+  /* Pulse ring for live indicator */
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 var(--gold); }
+    70% { box-shadow: 0 0 0 6px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+  /* Shimmer on gradient fire buttons */
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .btn-shimmer:hover::after {
+    transform: translateX(100%);
+  }
+
+  /* Section divider wave */
+  .section-wave {
+    clip-path: ellipse(75% 100% at 50% 0%);
+  }
