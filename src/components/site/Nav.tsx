@@ -7,10 +7,10 @@ import { useLang } from "@/context/LangContext";
 const leftLinks = [
   { href: "#about", id: "about", en: "About", es: "Nosotros" },
   { href: "#menu", id: "menu", en: "Menu", es: "Menú" },
-  { href: "#gallery", id: "gallery", en: "Gallery", es: "Galería" },
 ];
 
 const rightLinks = [
+  { href: "#gallery", id: "gallery", en: "Gallery", es: "Galería" },
   { href: "#catering", id: "catering", en: "Catering", es: "Catering" },
   { href: "#contact", id: "contact", en: "Visit", es: "Visítanos" },
 ];
@@ -54,16 +54,40 @@ export function Nav() {
     }`;
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 pt-16 pb-2">
-      <div className="mx-auto max-w-7xl px-4">
+    <header className="fixed top-0 inset-x-0 z-50">
+      {/* Top utility bar — EN/ES + Order Now */}
+      <div className="hidden lg:flex justify-end items-center gap-2 px-8 pt-4 pb-1">
+        <button
+          onClick={() => setLang(lang === "en" ? "es" : "en")}
+          className="relative flex items-center gap-0.5 rounded-full border border-white/25 bg-black/30 backdrop-blur-sm p-0.5 text-[10px] font-semibold uppercase tracking-wider text-white"
+          aria-label="Toggle language"
+        >
+          <span className={`relative z-10 px-2.5 py-1 rounded-full transition-all duration-300 ${lang === "en" ? "text-[var(--charcoal)]" : "text-white/60"}`}>EN</span>
+          <span className={`relative z-10 px-2.5 py-1 rounded-full transition-all duration-300 ${lang === "es" ? "text-[var(--charcoal)]" : "text-white/60"}`}>ES</span>
+          <span
+            className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-gradient-fire shadow-glow transition-all duration-300"
+            style={{ left: lang === "en" ? "2px" : "calc(50%)" }}
+          />
+        </button>
+        <a
+          href={RESTAURANT.phoneHref}
+          className="inline-flex items-center gap-1.5 rounded-full bg-gradient-fire px-4 py-1.5 text-xs font-medium text-cream shadow-glow hover:scale-[1.04] transition"
+          style={{ color: "var(--cream)" }}
+        >
+          <Phone className="h-3.5 w-3.5" /> {lang === "en" ? "Order Now" : "Ordenar"}
+        </a>
+      </div>
+
+      {/* Main nav pill */}
+      <div className="mx-auto max-w-7xl px-4 pb-2">
         <div
-          className={`relative flex items-center justify-between gap-4 rounded-full px-4 sm:px-6 py-3 text-cream shadow-soft transition-all duration-500 ${
+          className={`relative flex items-center justify-between gap-4 rounded-full px-4 sm:px-6 py-2.5 text-cream shadow-soft transition-all duration-500 ${
             scrolled ? "glass-dark" : "bg-black/20 backdrop-blur-sm border border-white/10"
           }`}
           style={{ color: "var(--cream)" }}
         >
           {/* Left links */}
-          <nav className="hidden md:flex flex-1 items-center justify-evenly pr-32">
+          <nav className="hidden md:flex flex-1 items-center justify-evenly pr-24">
             {leftLinks.map((l) => (
               <a key={l.href} href={l.href} className={linkClass(l.id)}>
                 {lang === "en" ? l.en : l.es}
@@ -81,7 +105,7 @@ export function Nav() {
               src={logo}
               alt={`${RESTAURANT.name} logo`}
               className={`object-contain transition-all duration-500 ${
-                scrolled ? "h-28 md:h-36" : "h-36 md:h-48"
+                scrolled ? "h-24 md:h-28" : "h-28 md:h-36"
               }`}
             />
           </a>
@@ -95,36 +119,7 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* Lang toggle + CTA */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
-            {/* Language slider */}
-            <button
-              onClick={() => setLang(lang === "en" ? "es" : "en")}
-              className="relative flex items-center gap-0.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm p-0.5 text-[10px] font-semibold uppercase tracking-wider"
-              aria-label="Toggle language"
-            >
-              <span className={`relative z-10 px-2.5 py-1 rounded-full transition-all duration-300 ${lang === "en" ? "text-[var(--charcoal)]" : "text-white/60"}`}>
-                EN
-              </span>
-              <span className={`relative z-10 px-2.5 py-1 rounded-full transition-all duration-300 ${lang === "es" ? "text-[var(--charcoal)]" : "text-white/60"}`}>
-                ES
-              </span>
-              {/* Sliding pill */}
-              <span
-                className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-gradient-fire shadow-glow transition-all duration-300"
-                style={{ left: lang === "en" ? "2px" : "calc(50%)" }}
-              />
-            </button>
-
-            <a
-              href={RESTAURANT.phoneHref}
-              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-fire px-4 py-2 text-xs font-medium text-cream shadow-glow hover:scale-[1.04] transition"
-              style={{ color: "var(--cream)" }}
-            >
-              <Phone className="h-3.5 w-3.5" /> {lang === "en" ? "Order Now" : "Ordenar"}
-            </a>
-          </div>
-
+          {/* Mobile hamburger */}
           <button
             className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full glass shrink-0"
             onClick={() => setOpen((v) => !v)}
@@ -147,7 +142,6 @@ export function Nav() {
                   {lang === "en" ? l.en : l.es}
                 </a>
               ))}
-              {/* Mobile lang toggle */}
               <button
                 onClick={() => setLang(lang === "en" ? "es" : "en")}
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium"
