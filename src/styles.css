@@ -38,8 +38,8 @@
   --color-gold: var(--gold);
   --color-cream: var(--cream);
 
-  --font-display: "Playfair Display", "Cormorant Garamond", serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
 
   --shadow-glow: 0 20px 60px -15px color-mix(in oklab, var(--chili) 45%, transparent);
   --shadow-soft: 0 10px 40px -10px oklch(0 0 0 / 0.35);

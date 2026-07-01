@@ -48,29 +48,23 @@ export function Nav() {
 
   const linkClass = (id: string) =>
     `relative text-sm transition-all duration-200 ${
-      active === id
-        ? "opacity-100 text-[var(--gold)]"
-        : "opacity-70 hover:opacity-100"
+      active === id ? "opacity-100 text-[var(--gold)]" : "opacity-70 hover:opacity-100"
     } after:absolute after:left-0 after:-bottom-1 after:h-px after:bg-[var(--gold)] after:transition-all after:duration-300 ${
       active === id ? "after:w-full" : "after:w-0 hover:after:w-full"
     }`;
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "pt-3 pb-2" : "pt-6 pb-4"
-      }`}
-    >
+    <header className="fixed top-0 inset-x-0 z-50 pt-4 pb-2">
       <div className="mx-auto max-w-7xl px-4">
         <div
-          className="relative flex items-center justify-between gap-4 rounded-full px-4 sm:px-6 py-2.5 glass-dark text-cream shadow-soft"
+          className={`relative flex items-center justify-between gap-4 rounded-full px-4 sm:px-6 py-2 text-cream shadow-soft transition-all duration-500 ${
+            scrolled ? "glass-dark" : "bg-black/20 backdrop-blur-sm border border-white/10"
+          }`}
           style={{ color: "var(--cream)" }}
         >
-          <nav className="hidden md:flex flex-1 items-center justify-evenly pr-24">
+          <nav className="hidden md:flex flex-1 items-center justify-evenly pr-20">
             {leftLinks.map((l) => (
-              <a key={l.href} href={l.href} className={linkClass(l.id)}>
-                {l.label}
-              </a>
+              <a key={l.href} href={l.href} className={linkClass(l.id)}>{l.label}</a>
             ))}
           </nav>
 
@@ -83,16 +77,14 @@ export function Nav() {
               src={logo}
               alt={`${RESTAURANT.name} logo`}
               className={`object-contain transition-all duration-500 ${
-                scrolled ? "h-24 md:h-32" : "h-32 md:h-44"
+                scrolled ? "h-20 md:h-28" : "h-24 md:h-36"
               }`}
             />
           </a>
 
-          <nav className="hidden md:flex flex-1 items-center justify-evenly pl-24">
+          <nav className="hidden md:flex flex-1 items-center justify-evenly pl-20">
             {rightLinks.map((l) => (
-              <a key={l.href} href={l.href} className={linkClass(l.id)}>
-                {l.label}
-              </a>
+              <a key={l.href} href={l.href} className={linkClass(l.id)}>{l.label}</a>
             ))}
           </nav>
 
@@ -121,9 +113,7 @@ export function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`rounded-lg px-3 py-2 hover:bg-white/10 transition ${
-                    active === l.id ? "text-[var(--gold)] bg-white/5" : ""
-                  }`}
+                  className={`rounded-lg px-3 py-2 hover:bg-white/10 transition ${active === l.id ? "text-[var(--gold)] bg-white/5" : ""}`}
                 >
                   {l.label}
                 </a>
