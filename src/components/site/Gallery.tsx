@@ -28,7 +28,7 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl">
           <Reveal>
-            <div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--chili)] font-semibold before:content-[''] before:block before:w-6 before:h-px before:bg-gradient-fire">
+            <div className="inline-flex items-center gap-2 rounded-sm border-l-2 border-[var(--chili)] bg-[var(--chili)]/8 pl-3 pr-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-[var(--chili)] font-bold">
               Gallery
             </div>
           </Reveal>

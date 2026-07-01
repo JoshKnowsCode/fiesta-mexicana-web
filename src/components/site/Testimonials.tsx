@@ -42,7 +42,7 @@ export function Testimonials() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center mb-14">
-          <Reveal><div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--gold)] font-semibold before:content-[''] before:block before:w-6 before:h-px before:bg-gradient-fire">{t.tag}</div></Reveal>
+          <Reveal><div className="inline-flex items-center gap-2 rounded-sm border-l-2 border-[var(--gold)] bg-[var(--gold)]/10 pl-3 pr-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-[var(--gold)] font-bold">{t.tag}</div></Reveal>
           <Reveal delay={80}>
             <h2 className="mt-5 text-4xl md:text-5xl font-display font-bold text-cream" style={{ color: "var(--cream)" }}>
               {t.h2a}<br /><span className="text-gradient-fire">{t.h2b}</span>

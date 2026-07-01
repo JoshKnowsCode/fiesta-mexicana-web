@@ -88,7 +88,7 @@ export function MenuSection() {
     <section id="menu" className="relative py-28 md:py-36 bg-[oklch(0.96_0.015_70)]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <Reveal><div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--chili)] font-semibold before:content-[''] before:block before:w-6 before:h-px before:bg-gradient-fire">{t.tag}</div></Reveal>
+          <Reveal><div className="inline-flex items-center gap-2 rounded-sm border-l-2 border-[var(--chili)] bg-[var(--chili)]/8 pl-3 pr-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-[var(--chili)] font-bold">{t.tag}</div></Reveal>
           <Reveal delay={80}><h2 className="mt-5 text-4xl md:text-6xl font-display font-bold">{t.h2a} <span className="text-gradient-fire">{t.h2b}</span></h2></Reveal>
           <Reveal delay={140}><p className="mt-5 text-muted-foreground">{t.sub}</p></Reveal>
         </div>
