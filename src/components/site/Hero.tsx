@@ -5,7 +5,6 @@ import { useLang } from "@/context/LangContext";
 
 const T = {
   en: {
-    badge: "Family-Owned · Rosedale, MD",
     h1a: "Food Made",
     h1b: "From the Heart",
     body: "Handmade tortillas, slow-cooked meats, and family recipes passed down for generations, just the way abuela made them.",
@@ -19,7 +18,6 @@ const T = {
     ],
   },
   es: {
-    badge: "Familiar · Rosedale, MD",
     h1a: "Comida Hecha",
     h1b: "Con el Corazón",
     body: "Tortillas hechas a mano, carnes cocinadas a fuego lento y recetas familiares de generación en generación, tal como las hacía la abuela.",
@@ -62,11 +60,6 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pt-40 pb-32 text-cream" style={{ color: "var(--cream)" }}>
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm px-4 py-1.5 text-[11px] uppercase tracking-[0.3em] text-white/80 mb-7">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse shrink-0" />
-            {t.badge}
-          </div>
-
           <h1 className="font-display text-[clamp(3rem,8vw,6.5rem)] font-bold leading-[0.9] tracking-tight">
             {t.h1a}<br />
             <span className="text-gradient-fire italic">{t.h1b}</span>

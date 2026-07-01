@@ -54,7 +54,7 @@ export function Nav() {
     }`;
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 pt-8 pb-2">
+    <header className="fixed top-0 inset-x-0 z-50 pt-24 pb-2">
       <div className="mx-auto max-w-7xl px-4">
         <div
           className={`relative flex items-center justify-between gap-4 rounded-full px-4 sm:px-6 py-3 text-cream shadow-soft transition-all duration-500 ${
