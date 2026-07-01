@@ -7,10 +7,10 @@ import { useLang } from "@/context/LangContext";
 const leftLinks = [
   { href: "#about", id: "about", en: "About", es: "Nosotros" },
   { href: "#menu", id: "menu", en: "Menu", es: "Menú" },
+  { href: "#gallery", id: "gallery", en: "Gallery", es: "Galería" },
 ];
 
 const rightLinks = [
-  { href: "#gallery", id: "gallery", en: "Gallery", es: "Galería" },
   { href: "#catering", id: "catering", en: "Catering", es: "Catering" },
   { href: "#contact", id: "contact", en: "Visit", es: "Visítanos" },
 ];
