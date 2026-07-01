@@ -48,8 +48,12 @@ export function Footer() {
           <img src={logo} alt={`${RESTAURANT.name} logo`} className="h-36 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]" />
           <p className="mt-4 text-sm text-white/60 leading-relaxed max-w-[18rem]">{t.tagline}</p>
           <div className="mt-5 flex gap-2">
-            {[{ Icon: Instagram, label: "Instagram" }, { Icon: Facebook, label: "Facebook" }, { Icon: Mail, label: "Email" }].map(({ Icon, label }) => (
-              <a key={label} href="#" aria-label={label} className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/8 transition">
+            {[
+              { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/fiestamexicana_restaurante_/" },
+              { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/p/Fiesta-Mexicana-100024269843996/" },
+              { Icon: Mail, label: "Email", href: "#" },
+            ].map(({ Icon, label, href }) => (
+              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" aria-label={label} className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/8 transition">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
