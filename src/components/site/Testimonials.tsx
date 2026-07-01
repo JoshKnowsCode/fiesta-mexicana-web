@@ -4,16 +4,16 @@ import { useLang } from "@/context/LangContext";
 
 const TESTIMONIALS = {
   en: [
-    { name: "Maria G.", place: "Rosedale, MD", text: "The pambazo is unreal, like something I'd eat at a market in Mexico City. Federico and the family treat you like familia.", highlight: "Like something from Mexico City" },
-    { name: "James K.", place: "Baltimore County", text: "Best Mexican food in the area, hands down. The tortillas are made by hand and you can taste it. The chilaquiles? Don't sleep on them.", highlight: "Best Mexican food in the area" },
-    { name: "Patricia R.", place: "Essex, MD", text: "I order the Paquete Llenes whenever family visits. It's a feast and everyone leaves happy. Authentic, generous, and delicious.", highlight: "Everyone leaves happy" },
-    { name: "Daniel V.", place: "Dundalk", text: "Catered our daughter's quinceañera and absolutely nailed it. Real moles, real chorizo, real care. Could not have asked for better.", highlight: "Real moles, real chorizo, real care" },
+    { name: "Sergio P.", place: "Yelp Review", text: "There is no better, more authentic, more quality and love in your food Mexican restaurant in Maryland, Virginia or Delaware. This place is the real deal.", highlight: "No better Mexican in MD, VA or DE" },
+    { name: "Verified Guest", place: "TripAdvisor", text: "I've been devouring their delicious food for about 13 years, since they were in a smaller location. Seriously the best Mexican food in the state. The food is made to order and you can see the women in the kitchen making it.", highlight: "Best Mexican food in the state" },
+    { name: "Verified Guest", place: "Yellow Pages", text: "Absolutely the best Mexican food anywhere. It's real Mexican food, not Tex-Mex. Try it — you'll keep coming back. Wish I didn't live 3 hours away, I'd eat here daily.", highlight: "Real Mexican food, not Tex-Mex" },
+    { name: "Verified Guest", place: "Restaurant Review", text: "The best Sopes I've ever had (besides my mom's). My bf said these are the best tacos he's had in 20 years. We traveled 80 miles from Virginia just for this place and it was worth every mile.", highlight: "Worth the 80-mile drive" },
   ],
   es: [
-    { name: "Maria G.", place: "Rosedale, MD", text: "El pambazo es increíble, como algo que comería en un mercado de la Ciudad de México. Federico y la familia te tratan como familia.", highlight: "Como algo de la Ciudad de México" },
-    { name: "James K.", place: "Baltimore County", text: "La mejor comida mexicana del área, sin duda. Las tortillas son hechas a mano y se nota. ¿Los chilaquiles? No te los pierdas.", highlight: "La mejor comida mexicana del área" },
-    { name: "Patricia R.", place: "Essex, MD", text: "Pido el Paquete Llenes cada vez que viene la familia. Es un festín y todos se van contentos. Auténtico, generoso y delicioso.", highlight: "Todos se van contentos" },
-    { name: "Daniel V.", place: "Dundalk", text: "Hicieron el catering de la quinceañera de mi hija y lo bordaron. Moles de verdad, chorizo de verdad, cariño de verdad.", highlight: "Moles de verdad, cariño de verdad" },
+    { name: "Sergio P.", place: "Reseña Yelp", text: "No hay restaurante mexicano más auténtico, con más calidad y amor en su comida en Maryland, Virginia o Delaware. Este lugar es de verdad.", highlight: "El mejor mexicano en MD, VA y DE" },
+    { name: "Cliente verificado", place: "TripAdvisor", text: "Llevo 13 años disfrutando su comida, desde que estaban en un local más pequeño. La comida es hecha al momento y se ve a las señoras cocinando en la cocina. El mejor mexicano del estado.", highlight: "El mejor mexicano del estado" },
+    { name: "Cliente verificado", place: "Yellow Pages", text: "Absolutamente la mejor comida mexicana. Es comida mexicana de verdad, no Tex-Mex. Pruébalo y seguirás volviendo. Ojalá no viviera a 3 horas, comería aquí todos los días.", highlight: "Comida mexicana de verdad" },
+    { name: "Cliente verificado", place: "Reseña restaurante", text: "Los mejores sopes que he probado. Mi novio dice que son los mejores tacos en 20 años. Viajamos 130 km desde Virginia solo para venir aquí y valió cada kilómetro.", highlight: "Valió cada kilómetro" },
   ],
 };
 
