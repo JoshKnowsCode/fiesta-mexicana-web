@@ -47,8 +47,8 @@ export function Catering() {
 
         <div>
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[var(--chili)]/10 text-[var(--chili)] px-3 py-1 text-xs uppercase tracking-[0.25em]">
-              <PartyPopper className="h-3.5 w-3.5" /> {t.tag}
+            <div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--chili)] font-semibold before:content-[''] before:block before:w-6 before:h-px before:bg-gradient-fire">
+              {t.tag}
             </div>
           </Reveal>
           <Reveal delay={80}>

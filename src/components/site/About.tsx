@@ -78,7 +78,7 @@ export function About() {
 
         <div>
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[var(--chili)]/10 text-[var(--chili)] px-3 py-1 text-xs uppercase tracking-[0.25em]">{t.tag}</div>
+            <div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--chili)] font-semibold before:content-[''] before:block before:w-6 before:h-px before:bg-gradient-fire">{t.tag}</div>
           </Reveal>
           <Reveal delay={80}>
             <h2 className="mt-5 text-4xl md:text-5xl font-display font-bold leading-tight">
