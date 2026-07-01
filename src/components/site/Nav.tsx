@@ -63,7 +63,7 @@ export function Nav() {
           style={{ color: "var(--cream)" }}
         >
           {/* Left links */}
-          <nav className="hidden md:flex flex-1 items-center justify-evenly pr-24">
+          <nav className="hidden md:flex flex-1 items-center justify-evenly pr-32">
             {leftLinks.map((l) => (
               <a key={l.href} href={l.href} className={linkClass(l.id)}>
                 {lang === "en" ? l.en : l.es}
