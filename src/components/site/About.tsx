@@ -58,13 +58,20 @@ export function About() {
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-fire opacity-15 blur-2xl" />
             <img src={kitchen} alt="Handmade tortillas pressed in our family kitchen" loading="lazy" width={1024} height={1024} className="relative rounded-[2rem] shadow-soft object-cover w-full h-[540px]" />
-            <div className="absolute -bottom-6 -right-6 hidden md:block rounded-2xl glass-dark p-5 text-cream border border-white/15 shadow-glow" style={{ color: "var(--cream)" }}>
-              <div className="text-4xl font-display"><Counter to={20} suffix="+" /></div>
-              <div className="text-xs uppercase tracking-[0.2em] mt-1 text-white/60">{t.years}</div>
-            </div>
-            <div className="absolute -top-4 -left-4 hidden md:flex items-center gap-2 rounded-full glass-dark border border-white/15 px-4 py-2 text-cream text-sm" style={{ color: "var(--cream)" }}>
-              <span className="h-2 w-2 rounded-full bg-[var(--gold)]" />
-              {t.badge1}
+            {/* Stats overlay at bottom of image */}
+            <div className="absolute bottom-0 inset-x-0 rounded-b-[2rem] overflow-hidden">
+              <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent px-7 pt-12 pb-6 flex items-end justify-between text-cream" style={{ color: "var(--cream)" }}>
+                {[
+                  { n: "20+", label: t.years },
+                  { n: "100%", label: lang === "en" ? "Family recipes" : "Recetas familiares" },
+                  { n: "5★", label: lang === "en" ? "Rated" : "Valoración" },
+                ].map((s) => (
+                  <div key={s.label} className="text-center">
+                    <div className="font-display text-2xl font-bold">{s.n}</div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-white/60 mt-0.5">{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
