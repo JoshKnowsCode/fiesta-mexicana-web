@@ -78,7 +78,7 @@ export function About() {
 
         <div>
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-sm border-l-2 border-[var(--chili)] bg-[var(--chili)]/8 pl-3 pr-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-[var(--chili)] font-bold">{t.tag}</div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[var(--chili)] font-bold bg-gradient-to-r from-[var(--chili)]/12 to-transparent rounded-full border border-[var(--chili)]/25">{t.tag}</div>
           </Reveal>
           <Reveal delay={80}>
             <h2 className="mt-5 text-4xl md:text-5xl font-display font-bold leading-tight">
