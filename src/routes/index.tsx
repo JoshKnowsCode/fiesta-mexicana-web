@@ -85,7 +85,7 @@ function Index() {
         <Testimonials />
         <WaveDown from={darkNight} to={cream} />
         <Catering />
-        <WaveUp from={cream} to={menuBg} />
+        <WaveDown from={cream} to={menuBg} />
         <Contact />
         <Footer />
         <MobileOrderBar />

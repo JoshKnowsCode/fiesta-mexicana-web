@@ -84,7 +84,10 @@ export function Catering() {
                   <input required placeholder={t.namePh} className="rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--chili)]" />
                   <input required type="email" placeholder={t.emailPh} className="rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--chili)]" />
                   <input required placeholder={t.phonePh} className="rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--chili)]" />
-                  <input required type="date" className="rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--chili)]" />
+                  <div className="relative rounded-xl border bg-background focus-within:ring-2 focus-within:ring-[var(--chili)]">
+                    <label className="absolute top-1.5 left-4 text-[10px] uppercase tracking-wider text-muted-foreground">{t.datePh}</label>
+                    <input required type="date" className="w-full bg-transparent px-4 pt-6 pb-2 outline-none text-sm" />
+                  </div>
                   <input placeholder={t.guestPh} className="rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--chili)] sm:col-span-2" />
                   <textarea placeholder={t.msgPh} rows={3} className="rounded-xl border bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--chili)] sm:col-span-2" />
                   <button type="submit" className="sm:col-span-2 inline-flex justify-center items-center gap-2 rounded-full bg-gradient-fire px-6 py-3.5 font-medium text-cream shadow-glow hover:scale-[1.02] active:scale-95 transition" style={{ color: "var(--cream)" }}>{t.submit}</button>

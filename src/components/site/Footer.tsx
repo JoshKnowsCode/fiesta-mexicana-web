@@ -43,7 +43,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-4 gap-10">
+      <div className="relative mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-3 gap-10">
         <div className="md:col-span-1">
           <img src={logo} alt={`${RESTAURANT.name} logo`} className="h-36 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]" />
           <p className="mt-4 text-sm text-white/60 leading-relaxed max-w-[18rem]">{t.tagline}</p>
@@ -73,15 +73,6 @@ export function Footer() {
             <li className="flex gap-3"><Clock className="h-4 w-4 text-[var(--chili)] mt-0.5 shrink-0" /><span className="text-white/70">{RESTAURANT.hours}</span></li>
           </ul>
           <p className="mt-5 text-xs text-white/40 italic">{t.disclaimer}</p>
-        </div>
-
-        <div>
-          <div className="text-xs uppercase tracking-[0.22em] text-white/45 mb-5">{t.loop}</div>
-          <p className="text-sm text-white/60 mb-4 leading-relaxed">{t.loopSub}</p>
-          <div className="flex rounded-full glass-dark p-1.5 max-w-xs">
-            <input type="email" placeholder={t.emailPh} className="flex-1 bg-transparent px-4 py-2 text-sm outline-none placeholder:text-white/40" />
-            <button className="rounded-full bg-gradient-fire px-4 py-2 text-sm font-medium text-cream hover:scale-[1.03] transition" style={{ color: "var(--cream)" }}>{t.join}</button>
-          </div>
         </div>
       </div>
 
