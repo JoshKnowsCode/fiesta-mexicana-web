@@ -41,7 +41,7 @@ export function Gallery() {
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
           {SHOTS.map((s, i) => (
-            <Reveal key={i} delay={i * 50} className={s.span}>
+            <Reveal key={i} delay={i * 50} className={s.span} animation="zoom">
               <button
                 onClick={() => setLightbox(s.src)}
                 className="group relative h-full w-full overflow-hidden rounded-2xl shadow-soft"

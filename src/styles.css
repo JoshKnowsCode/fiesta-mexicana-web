@@ -191,3 +191,82 @@
   .section-wave {
     clip-path: ellipse(75% 100% at 50% 0%);
   }
+
+  /* ── Scroll animations ── */
+  .scroll-anim {
+    --anim-duration: 700ms;
+    --anim-ease: cubic-bezier(0.22, 0.8, 0.32, 1);
+    will-change: transform, opacity, filter;
+  }
+
+  /* fade-up (default) */
+  .scroll-anim--fade-up {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+                transform var(--anim-duration) var(--anim-ease);
+  }
+  .scroll-anim--fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* fade-in (no movement) */
+  .scroll-anim--fade-in {
+    opacity: 0;
+    transition: opacity var(--anim-duration) var(--anim-ease);
+  }
+  .scroll-anim--fade-in.in-view {
+    opacity: 1;
+  }
+
+  /* fade-left (slides in from right) */
+  .scroll-anim--fade-left {
+    opacity: 0;
+    transform: translateX(48px);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+                transform var(--anim-duration) var(--anim-ease);
+  }
+  .scroll-anim--fade-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* fade-right (slides in from left) */
+  .scroll-anim--fade-right {
+    opacity: 0;
+    transform: translateX(-48px);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+                transform var(--anim-duration) var(--anim-ease);
+  }
+  .scroll-anim--fade-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* zoom (scale up from slightly small) */
+  .scroll-anim--zoom {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+                transform var(--anim-duration) var(--anim-ease);
+  }
+  .scroll-anim--zoom.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* blur-in */
+  .scroll-anim--blur-in {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(16px);
+    transition: opacity var(--anim-duration) var(--anim-ease),
+                filter var(--anim-duration) var(--anim-ease),
+                transform var(--anim-duration) var(--anim-ease);
+  }
+  .scroll-anim--blur-in.in-view {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }

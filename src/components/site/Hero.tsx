@@ -60,7 +60,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pt-40 pb-32 text-cream" style={{ color: "var(--cream)" }}>
         <div className="max-w-2xl">
-          <h1 className="font-display text-[clamp(3rem,8vw,6.5rem)] font-bold leading-[0.9] tracking-tight">
+          <h1 className="scroll-anim scroll-anim--blur-in in-view font-display text-[clamp(3rem,8vw,6.5rem)] font-bold leading-[0.9] tracking-tight">
             {t.h1a}<br />
             <span className="text-gradient-fire italic">{t.h1b}</span>
           </h1>

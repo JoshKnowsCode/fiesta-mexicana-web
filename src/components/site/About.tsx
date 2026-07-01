@@ -10,7 +10,6 @@ const T = {
     h2a: "A family kitchen,",
     h2b: "open to yours.",
     body: "Fiesta Mexicana is a family-owned restaurant in Rosedale serving the recipes we grew up with. Handmade tortillas on the comal, slow-simmered moles when they arrive from Mexico City, and chorizo we make ourselves. Nothing fancy, nothing shortcut. Just real Mexican food, the way it has always been made: from the heart.",
-    badge1: "Family-owned since day one",
     years: "Years of recipes",
     pillars: [
       { k: "Handmade", v: "Tortillas, sopes & quesadillas pressed daily" },
@@ -28,7 +27,6 @@ const T = {
     h2a: "Una cocina familiar,",
     h2b: "abierta a la tuya.",
     body: "Fiesta Mexicana es un restaurante familiar en Rosedale que sirve las recetas con las que crecimos. Tortillas hechas a mano en el comal, moles a fuego lento que traemos de la Ciudad de México, y chorizo que hacemos nosotros mismos. Sin atajos, sin artificios. Solo comida mexicana de verdad, como siempre se ha hecho: con el corazón.",
-    badge1: "Familia desde el primer día",
     years: "Años de recetas",
     pillars: [
       { k: "Artesanal", v: "Tortillas, sopes y quesadillas hechos a diario" },
@@ -54,11 +52,12 @@ export function About() {
       <div className="pointer-events-none absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full opacity-[0.06]" style={{ background: "var(--gradient-fire)", filter: "blur(80px)" }} />
 
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-16 items-center">
-        <Reveal>
+
+        {/* Image slides in from left */}
+        <Reveal animation="fade-right" duration={900}>
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-fire opacity-15 blur-2xl" />
             <img src={kitchen} alt="Handmade tortillas pressed in our family kitchen" loading="lazy" width={1024} height={1024} className="relative rounded-[2rem] shadow-soft object-cover w-full h-[540px]" />
-            {/* Stats overlay at bottom of image */}
             <div className="absolute bottom-0 inset-x-0 rounded-b-[2rem] overflow-hidden">
               <div className="bg-gradient-to-t from-black/80 via-black/40 to-transparent px-7 pt-12 pb-6 grid grid-cols-3 items-end text-center text-cream" style={{ color: "var(--cream)" }}>
                 {[
@@ -76,16 +75,17 @@ export function About() {
           </div>
         </Reveal>
 
+        {/* Text slides in from right */}
         <div>
-          <Reveal>
+          <Reveal animation="fade-left">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[var(--chili)] font-bold bg-gradient-to-r from-[var(--chili)]/12 to-transparent rounded-full border border-[var(--chili)]/25">{t.tag}</div>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal animation="fade-left" delay={80}>
             <h2 className="mt-5 text-4xl md:text-5xl font-display font-bold leading-tight">
-              {t.h2a}{" "}<span className="text-gradient-fire">{t.h2b}</span>
+              {t.h2a} <span className="text-gradient-fire">{t.h2b}</span>
             </h2>
           </Reveal>
-          <Reveal delay={140}>
+          <Reveal animation="fade-left" delay={160}>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{t.body}</p>
           </Reveal>
 
@@ -93,7 +93,7 @@ export function About() {
             {t.pillars.map(({ k, v }, i) => {
               const Icon = ICONS[i];
               return (
-                <Reveal key={k} delay={200 + i * 70}>
+                <Reveal key={k} animation="fade-left" delay={240 + i * 80}>
                   <div className="flex items-start gap-4 rounded-2xl border bg-card px-5 py-4 hover-lift">
                     <div className="h-9 w-9 rounded-xl bg-gradient-fire flex items-center justify-center shrink-0">
                       <Icon className="h-4 w-4 text-cream" style={{ color: "var(--cream)" }} />
@@ -108,7 +108,7 @@ export function About() {
             })}
           </div>
 
-          <Reveal delay={440}>
+          <Reveal animation="fade-up" delay={480}>
             <div className="mt-10 flex flex-wrap gap-8 text-sm">
               {t.stats.map(({ n, suf, label }) => (
                 <div key={label}>

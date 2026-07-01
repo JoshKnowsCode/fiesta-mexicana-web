@@ -140,7 +140,7 @@ export function MenuSection() {
               </Reveal>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {cat.items.map((item, i) => (
-                  <Reveal key={item.name} delay={i * 40}><Card item={item} t={t} /></Reveal>
+                  <Reveal key={item.name} delay={i * 40} animation="fade-up"><Card item={item} t={t} /></Reveal>
                 ))}
               </div>
             </div>

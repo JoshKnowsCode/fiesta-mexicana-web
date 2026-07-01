@@ -52,7 +52,7 @@ export function Testimonials() {
 
         <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
           {testimonials.map((t2, i) => (
-            <Reveal key={t2.name} delay={i * 80}>
+            <Reveal key={t2.name} delay={i * 80} animation="zoom">
               <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur p-7 flex flex-col h-full group hover:border-white/20 hover:bg-white/8 transition-all duration-300">
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <Stars />

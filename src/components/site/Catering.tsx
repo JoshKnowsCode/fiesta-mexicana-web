@@ -38,27 +38,30 @@ export function Catering() {
   return (
     <section id="catering" className="relative py-28 md:py-36 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-14 items-center">
-        <Reveal>
+
+        {/* Image from left */}
+        <Reveal animation="fade-right" duration={900}>
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-fire opacity-20 blur-2xl" />
             <img src={catering} alt="Mexican catering spread for events" loading="lazy" width={1600} height={1024} className="relative rounded-[2rem] shadow-soft object-cover w-full h-[520px]" />
           </div>
         </Reveal>
 
+        {/* Text from right */}
         <div>
-          <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[var(--chili)] font-bold bg-gradient-to-r from-[var(--chili)]/12 to-transparent rounded-full border border-[var(--chili)]/25">
-              {t.tag}
-            </div>
+          <Reveal animation="fade-left">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[var(--chili)] font-bold bg-gradient-to-r from-[var(--chili)]/12 to-transparent rounded-full border border-[var(--chili)]/25">{t.tag}</div>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal animation="fade-left" delay={80}>
             <h2 className="mt-5 text-4xl md:text-5xl font-display font-bold leading-tight">
               {t.h2a} <span className="text-gradient-fire">{t.h2b}</span>
             </h2>
           </Reveal>
-          <Reveal delay={140}><p className="mt-5 text-muted-foreground text-lg">{t.body}</p></Reveal>
+          <Reveal animation="fade-left" delay={160}>
+            <p className="mt-5 text-muted-foreground text-lg">{t.body}</p>
+          </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal animation="fade-up" delay={240}>
             <ul className="mt-6 grid sm:grid-cols-2 gap-2 text-sm">
               {([Users, Utensils, PartyPopper, Check] as const).map((Icon, i) => (
                 <li key={i} className="flex items-center gap-2 rounded-xl bg-muted px-3 py-2">
@@ -68,7 +71,7 @@ export function Catering() {
             </ul>
           </Reveal>
 
-          <Reveal delay={280}>
+          <Reveal animation="fade-up" delay={320}>
             <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="mt-8 rounded-3xl border bg-card p-5 sm:p-6 shadow-soft">
               {sent ? (
                 <div className="py-8 text-center">
